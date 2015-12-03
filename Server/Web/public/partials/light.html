@@ -1,0 +1,20 @@
+
+<div class="box-header">
+ <div class="pull-right box-tools">
+    <div class="btn-group">
+        <button type="button" ng-click="turnAllOn()" class="btn btn-default btn-sm"><i class="fa fa-square text-green"></i></button>
+        <button type="button" ng-click="turnAllOff()" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+    </div>
+ </div>
+ <h3 class="box-title">
+    <!--i.fa.fa-comments-o-->Lights
+ </h3>
+</div>
+<div class="box-body">
+ <div class="row">
+    <div ng-repeat="light in lights" class="col-sm-6 light">
+       <p>{{ light.Name }}</p>
+       <label class="switch-light switch-android"><input type="checkbox" ng-model="test" ng-checked="{{ light.On }}" ng-change="toggle()" class="switch"><span><span>Off</span><span>On</span></span><a></a></label>
+    </div>
+ </div>
+</div>

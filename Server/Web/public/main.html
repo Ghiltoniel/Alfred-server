@@ -1,0 +1,133 @@
+<header class="header">
+    <a href="/" class="logo">
+        NAM
+    </a>
+    <!-- Header Navbar: style can be found in header.less-->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <!-- Sidebar toggle button--><a href="#" data-toggle="offcanvas" role="button" class="navbar-btn sidebar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-envelope"></i><span class="label label-success">4</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 4 messages</li>
+                        <li>
+                            <!-- inner menu: contains the actual data-->
+                            <ul class="menu">
+                                <li>
+                                    <!-- start message-->
+                                    <a href="#">
+                                        <div class="pull-left"><img src="img/avatar3.png" alt="User Image" class="img-circle"></div>
+                                        <h4>Support Team<small><i class="fa fa-clock-o"></i>5 mins</small></h4>
+                                        <p>Why not buy a new awesome theme?</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+                <!-- Notifications: style can be found in dropdown.less-->
+                <li ng-controller="notification" class="dropdown notifications-menu" ng-include="'partials/notification.html'">
+                </li>
+                <!-- Tasks: style can be found in dropdown.less-->
+                <li class="dropdown tasks-menu">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-tasks"></i><span class="label label-danger">9</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 9 tasks</li>
+                        <li>
+                            <!-- inner menu: contains the actual data-->
+                            <ul class="menu">
+                                <!-- Task item-->
+                                <li>
+                                    <a href="#">
+                                        <h3>Design some buttons<small class="pull-right">20%</small></h3>
+                                        <div class="progress xs">
+                                            <div style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-aqua"><span class="sr-only">20% Complete</span></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!-- end task item-->
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all tasks</a></li>
+                    </ul>
+                </li>
+                <!-- User Account: style can be found in dropdown.less-->
+                <li class="dropdown user user-menu" ng-controller="userInfos" ng-include="'partials/user-infos.html'">
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+</body>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar-->
+    <aside class="left-side sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less-->
+        <section class="sidebar" ng-include="'partials/sidebar.html'"></section>
+        <!-- /.sidebar-->
+    </aside>
+    <!-- Right side column. Contains the navbar and content of the page-->
+    <aside class="right-side">
+        <!-- Content Header (Page header)-->
+        <section class="content-header">
+            <h1>Namboard<small>Control panel</small></h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+        <!-- Main content-->
+        <section class="content">
+            <!-- Small boxes (Stat box)-->
+            <div class="row">
+
+                <div ng-controller="mouvement" class="col-lg-3 col-xs-6" ng-include="'partials/mouvement.html'">
+                </div>
+
+                <div ng-controller="sensorInfos" class="col-lg-3 col-xs-6" ng-include="'partials/sensor-infos-temperature.html'">
+                </div>
+
+                <div ng-controller="sensorInfos" class="col-lg-3 col-xs-6" ng-include="'partials/sensor-infos-humidity.html'">
+                </div>
+
+                <div ng-controller="audioPlayer" class="col-lg-3 col-xs-6" ng-include="'partials/audio-player.html'">
+                </div>
+                <!-- ./col-->
+            </div>
+            <!-- Main row-->
+            <div class="row">
+                <!-- Left col-->
+                <section class="col-lg-6 connectedSortable">
+
+                    <div ng-controller="light" class="box box-success" ng-include="'partials/light.html'">
+                    </div>
+
+                    <div ng-controller="scenario" class="box box-success" ng-include="'partials/scenario.html'">
+                    </div>
+                    
+                    <div ng-controller="torrents" class="box box-success" ng-include="'partials/torrents.html'">
+                    </div>
+
+                    <div ng-controller="chat" class="box box-success" ng-include="'partials/chat.html'">
+                    </div>
+
+                </section>
+                <!-- Right col (We are only adding the ID to make the widgets sortable)-->
+                <section class="col-lg-6 connectedSortable">
+
+                    <div ng-controller="sensor" class="nav-tabs-custom box box-solid" ng-include="'partials/sensor.html'">
+                    </div>
+
+                    <div ng-controller="texttospeech" class="box box-success" ng-include="'partials/texttospeech.html'">
+                    </div>
+
+                    <div ng-controller="people" class="box box-success" ng-include="'partials/people.html'" onload="initDashboard()">
+                    </div>
+                </section>
+            </div>
+        </section>
+    </aside>
+</div>

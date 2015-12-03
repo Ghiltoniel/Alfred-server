@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AlfredServer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebSocketServerPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">13100</Value>
+    </Setting>
+    <Setting Name="WebSocketServerHostname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nam.kicks-ass.org</Value>
+    </Setting>
+    <Setting Name="WebApiServerHostname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api-nam.kicks-ass.org</Value>
+    </Setting>
+    <Setting Name="WebApiServerPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="WebsiteName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Home</Value>
+    </Setting>
+    <Setting Name="JazzRadio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.jazzradio.fr/radio/webradio/jazz</Value>
+    </Setting>
+    <Setting Name="DjamRadio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.ledjamradio.com/playlist.m3u</Value>
+    </Setting>
+    <Setting Name="DIRadio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.di.fm/</Value>
+    </Setting>
+    <Setting Name="PushBulletApiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TBtbmYFodVxjCarqzTjih1k0DAqiu1Bx</Value>
+    </Setting>
+    <Setting Name="FreeMobileUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">19850665</Value>
+    </Setting>
+    <Setting Name="FreeMobileKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gsoRy0VWBCbK9R</Value>
+    </Setting>
+    <Setting Name="StaticWebsitepath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\guillaume\Documents\Projects\Alfred\AlfredServer\Web\public</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

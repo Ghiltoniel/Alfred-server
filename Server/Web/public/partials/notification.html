@@ -1,0 +1,15 @@
+<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-warning"></i><span class="label label-warning">{{ notifications.length }}</span></a>
+<ul class="dropdown-menu">
+  <li class="header">You have {{ notifications.length }} notifications</li>
+  <li>
+     <!-- inner menu: contains the actual data-->
+     <ul class="menu">
+        <li ng-repeat="notification in notifications | orderBy: '-id' | limitTo: 5">
+           <a>
+              <h4>{{ notification.user }}<small><i class="fa fa-clock-o"></i>{{ notification.time }}</small></h4>
+              <p>{{ notification.task }}</p>
+           </a>
+        </li>
+     </ul>
+  </li>
+</ul>

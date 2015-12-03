@@ -1,0 +1,11 @@
+
+<!-- small box-->
+<div ng-class="someoneThere == 'True' ? 'bg-green' : 'bg-red'" class="small-box">
+  <div class="inner">
+     <h3>{{ someoneThere == 'True' ? 'Youpie !' : 'Too bad' }}</h3>
+     <p>{{ someoneThere == 'True' ? 'Someone\'s at the NAM!' : 'The NAM is empty :(' }}</p>
+  </div>
+  <div class="icon"><i ng-class="someoneThere == 'True' ? 'ion-happy' : 'ion-sad'" class="ion"></i></div>
+  <div class="small-box-footer">{{ someoneThere == 'True' ? 'Let\'s get started ! :)' : 'Bring friends ASAP !' }}</div>
+</div>
+<!-- ./col--><!-- /.row-->

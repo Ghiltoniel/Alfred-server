@@ -1,0 +1,11 @@
+
+<!-- Tabs within a box-->
+<ul class="nav nav-tabs pull-right">
+ <li ng-repeat="s in sensors" ng-class="s.Id == sensor.Id ? 'active' : ''"><a data-target="#sensor-{{s.Id}}" data-toggle="tab" ng-click="selectSensor()">{{ s.Name }}</a></li>
+ <li class="pull-left header"><i class="fa fa-inbox"></i>Sensors</li>
+</ul>
+<div class="tab-content no-padding">
+ <!-- Morris chart - Sales-->
+ <div ng-repeat="s in sensors" ng-class="s.Id == sensor.Id ? 'active' : ''" id="sensor-{{s.Id}}" style="position: relative; height: 300px;" class="tab-pane chart"></div>
+</div>
+<div ng-show="loading" class="loading-img"></div>

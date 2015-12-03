@@ -1,0 +1,16 @@
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\obj\Debug\AlfredDbModel.csprojResolveAssemblyReference.cache
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\obj\Debug\AlfredDbModel.csproj.GenerateResource.Cache
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Alfred.Model.Core.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\EntityFramework.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Alfred.Model.Core.pdb
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\EntityFramework.xml
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\obj\Debug\Alfred.Model.Db.Migrations.First.resources
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Alfred.Model.Db.dll.config
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Alfred.Model.Db.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\bin\Debug\Alfred.Model.Db.pdb
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\obj\Debug\Alfred.Model.Db.dll
+C:\Users\guillaume\Source\Alfred\AlfredDbModel\obj\Debug\Alfred.Model.Db.pdb

@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AlfredUtils.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="APIKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TWAGS7V2OS1M6SWVF</Value>
+    </Setting>
+    <Setting Name="ServerHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="ServerPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">13100</Value>
+    </Setting>
+    <Setting Name="JazzRadio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.jazzradio.fr/radio/webradio/jazz</Value>
+    </Setting>
+    <Setting Name="DjamRadio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.ledjamradio.com/playlist.m3u</Value>
+    </Setting>
+    <Setting Name="DIRadio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.di.fm/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
