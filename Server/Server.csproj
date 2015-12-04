@@ -311,10 +311,6 @@
       <Project>{e5cfe928-52ba-4ca1-b837-90cc763f50c6}</Project>
       <Name>Model.Db</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Plugins\Plugins.csproj">
-      <Project>{e7b9d607-b497-4051-af17-38dd947a98f1}</Project>
-      <Name>Plugins</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{5139cbe2-ef46-4f83-aed3-72b88ff55dc5}</Project>
       <Name>Utils</Name>

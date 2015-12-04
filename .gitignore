@@ -19,3 +19,6 @@
 /App/App.iOS/obj
 /Model.Db/bin
 /Model.Db/obj
+/Player/bin
+/Player/obj
+/.vs
