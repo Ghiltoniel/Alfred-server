@@ -25,7 +25,7 @@ namespace Alfred.Plugins
             LightConfigurations.HueBridgeUser = hueUser;
 
             // Preload lights
-            CommonManagers.LightManager.SetDevices().Wait();
+            CommonManagers.LightManager.SetDevices();
             CommonManagers.LightManager.CollectionChanged += Devices_CollectionChanged;
         }
 

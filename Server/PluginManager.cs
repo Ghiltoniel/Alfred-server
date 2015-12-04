@@ -33,15 +33,20 @@ namespace Alfred.Plugins.Manager
 
             LoadedPlugins = new Dictionary<string, BasePlugin>();
             _pluginTypes = AppDomain.CurrentDomain.GetAssemblies()
-                       .Where(a => a.GetName().Name == "AlfredPlugins")
+                       .Where(a => a.GetName().Name == "Alfred.Plugins")
                        .Union(AppDomain.CurrentDomain.GetAssemblies()
-                       .Where(a => a.GetName().Name == "AlfredServer"))
+                       .Where(a => a.GetName().Name == "Alfred.Server"))
                        .SelectMany(assembly => assembly.GetTypes())
                        .Where(type => type.IsSubclassOf(typeof(BasePlugin)))
                        .OrderBy(t => t.Name)
                        .ToList();
 
             var directory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "lib");
+            if(!directory.Exists)
+            {
+                directory.Create();
+            }
+
             foreach (var file in directory.GetFiles())
             {
                 if (file.Extension != ".dll")

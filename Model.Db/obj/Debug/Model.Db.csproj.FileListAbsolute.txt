@@ -10,8 +10,12 @@ C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\EntityFramework.xml
 C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\Newtonsoft.Json.xml
 C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Model.Db.csprojResolveAssemblyReference.cache
-C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Alfred.Model.Db.Migrations.First.resources
-C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Model.Db.csproj.GenerateResource.Cache
 C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Alfred.Model.Db.dll
 C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Alfred.Model.Db.pdb
 C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\Fleck2.dll
+C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\guillaume\Source\Alfred\Model.Db\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Alfred.Model.Db.Migrations.First.resources
+C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Model.Db.csproj.GenerateResource.Cache
+C:\Users\guillaume\Source\Alfred\Model.Db\obj\Debug\Alfred.Model.Db.Migrations.ChangeMaxLengthLights.resources

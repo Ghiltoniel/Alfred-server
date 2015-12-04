@@ -7,6 +7,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.StaticFiles;
 using Newtonsoft.Json;
 using Owin;
+using System;
+using System.IO;
+using System.Diagnostics;
 
 namespace Alfred.Server
 {
@@ -27,10 +30,23 @@ namespace Alfred.Server
             //Minifier.MinifyCss();
 
             // Turns on static files, directory browsing, and default files.
+            
+            var gitRepo = "https://github.com/Ghiltoniel/Alfred-ionic.git";
+            var wwwDir = Path.Combine(Environment.CurrentDirectory, "www_app");
+            string gitCloneArgument = string.Format(@"clone ""{0}"" ""{1}""", gitRepo, wwwDir);
+
+            var directoryInfo = new DirectoryInfo(wwwDir);
+            if (directoryInfo.Exists && DateTime.UtcNow.Subtract(directoryInfo.CreationTimeUtc).TotalDays > 1)
+            {
+                directoryInfo.Delete();
+                var process = Process.Start("git", gitCloneArgument);
+                process.WaitForExit(100000);
+            }
+
             app.UseFileServer(new FileServerOptions
             {
                 RequestPath = new PathString(""),
-                FileSystem = new PhysicalFileSystem(Settings.Default.StaticWebsitepath),
+                FileSystem = new PhysicalFileSystem(Path.Combine(wwwDir, "www")),
                 EnableDirectoryBrowsing = true
             });
 

@@ -12,6 +12,8 @@ namespace Alfred.Model.Db
     {
         [Key]
         public int Id { get; set; }
+
+        [StringLength(256)]
         public string Term { get; set; }
 
         [ForeignKey("Command")]

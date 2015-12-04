@@ -21,7 +21,6 @@ namespace Alfred.Model.Db
         public DbSet<Episode> Episodes { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Configuration> Configurations { get; set; }
-        public DbSet<ShopItem> ShopItems { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Path> Paths { get; set; }
 

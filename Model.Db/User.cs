@@ -11,9 +11,13 @@ namespace Alfred.Model.Db
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
+        [StringLength(256)]
         public string Username { get; set; }
+
         [Required]
+        [StringLength(256)]
         public string Password { get; set; }
     }
 }
