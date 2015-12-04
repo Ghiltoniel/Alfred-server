@@ -22,3 +22,9 @@
 /Player/bin
 /Player/obj
 /.vs
+/Client.Gui/bin/Debug/*.dll
+*.dll
+*.pdb
+*.dll
+*.pdb
+*.cache
