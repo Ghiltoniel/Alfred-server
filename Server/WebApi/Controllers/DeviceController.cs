@@ -6,9 +6,11 @@ using Alfred.Plugins;
 using Alfred.Plugins.Manager;
 using Alfred.Utils;
 using Alfred.Utils.Managers;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class DeviceController : ApiController
     {
         private readonly LightManager _lightManager = CommonManagers.LightManager;

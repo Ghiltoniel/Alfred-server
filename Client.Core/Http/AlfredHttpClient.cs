@@ -11,13 +11,21 @@ namespace Alfred.Client.Core.Http
 {
     public class AlfredHttpClient : HttpClient
     {
-        public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        public override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (!string.IsNullOrEmpty(AlfredClient.Token))
             {
                 DefaultRequestHeaders.Add("token", AlfredClient.Token);
             }
-            return base.SendAsync(request, cancellationToken);
+            var response = await base.SendAsync(request, cancellationToken);
+
+            if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                if(AlfredPluginsHttp.UnauthorizedHandler != null)
+                    AlfredPluginsHttp.UnauthorizedHandler(this, null);
+            }
+
+            return response;
         }
     }
 }

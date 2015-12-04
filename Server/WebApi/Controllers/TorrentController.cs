@@ -1,8 +1,10 @@
 ﻿using System.Web.Http;
 using Alfred.Utils.Synology;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class TorrentController : ApiController
     {
         [HttpGet]

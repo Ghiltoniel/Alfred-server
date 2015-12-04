@@ -11,9 +11,11 @@ using Alfred.Server.Properties;
 using Alfred.Utils.Server;
 using Newtonsoft.Json;
 using RestSharp;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class PeopleController : ApiController
     {
         [HttpGet]

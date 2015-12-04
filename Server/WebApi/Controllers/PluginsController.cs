@@ -1,5 +1,6 @@
 ﻿using Alfred.Model.Core.Plugins;
 using Alfred.Plugins.Manager;
+using Alfred.Server.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class PluginsController : ApiController
     {
         [HttpGet]

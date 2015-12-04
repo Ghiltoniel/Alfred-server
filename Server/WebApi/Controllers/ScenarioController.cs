@@ -14,9 +14,11 @@ using System.Net.Http;
 using System.Net;
 using Alfred.Plugins.Manager;
 using Alfred.Model.Db.Repositories;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class ScenarioController : ApiController
     {
         public ScenarioRepository _repo;

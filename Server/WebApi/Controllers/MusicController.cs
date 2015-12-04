@@ -9,9 +9,11 @@ using Alfred.Utils.Radios;
 using Alfred.Model.Db;
 using System;
 using Alfred.Model.Db.Repositories;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class MusicController : ApiController
     {
         private PlaylistRepository _playlistRepo;

@@ -12,6 +12,8 @@ namespace Alfred.Client.Core
         public Scenario Scenario;
         public Http.Alfred Alfred;
 
+        public static EventHandler UnauthorizedHandler;
+
         public AlfredPluginsHttp(string url = "http://api-nam.kicks-ass.org/")
         {
             var httpClient = new AlfredHttpClient()

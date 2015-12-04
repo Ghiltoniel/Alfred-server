@@ -8,9 +8,11 @@ using Alfred.Utils.Managers;
 using Newtonsoft.Json;
 using Alfred.Model.Core.Sensor;
 using Alfred.Utils;
+using Alfred.Server.Attributes;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class SensorController : ApiController
     {
         private static DateTime _lastMouvement = DateTime.Now;

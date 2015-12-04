@@ -1,10 +1,12 @@
 ﻿using Alfred.Model.Core;
+using Alfred.Server.Attributes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Alfred.Server.WebApi.Controllers
 {
+    [TokenAuthorize]
     public class AlfredController : ApiController
     {
         [HttpPost]
