@@ -1,0 +1,81 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Alfred.Client.Gui.MainWindow"
+        Title="MainWindow" 
+        x:Name="Home"
+        Height="575" 
+        Width="345"
+        WindowStyle="ThreeDBorderWindow">
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}">
+            <Setter Property="FontFamily" Value="Segoe-UI"/>
+        </Style>
+        <Style x:Key="Body_Content_DataGrid_Centering" TargetType="{x:Type DataGridCell}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#FFACF384" />
+            <Setter Property="Height" Value="100" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="253.671" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="305.088"/>
+        <Label Content="Speech Recognition&#xA;" HorizontalAlignment="Left" Margin="52.099,29.969,0,0" VerticalAlignment="Top" Height="46.288" Width="188.662" FontSize="16"/>
+        <Label x:Name="RecognizedTextLabel" Content="Texte reconnu :&#xA;" HorizontalAlignment="Left" Margin="20.79,76.385,0,0" VerticalAlignment="Top" Height="34.412" Width="108.636" FontSize="13.333"/>
+        <Label x:Name="RecognizedCommandLabel" Content="Commande reconnu :" HorizontalAlignment="Left" Margin="20.79,110.797,0,0" VerticalAlignment="Top" Height="34.413" Width="144.258" FontSize="13.333"/>
+        <Label x:Name="RecognizedText" Content="" HorizontalAlignment="Left" Margin="164.358,76.257,0,0" VerticalAlignment="Top" Height="34.412" Width="108.636" FontSize="8"/>
+        <Label x:Name="RecognizedCommand" Content="" HorizontalAlignment="Left" Margin="164.358,110.797,0,0" VerticalAlignment="Top" Height="34.413" Width="108.636" FontSize="8"/>
+        <Button x:Name="ConfigurationButton" Content="Configuration" HorizontalAlignment="Left" Margin="20.79,165.981,0,0" VerticalAlignment="Top" Width="128.995" Height="32.318" FontSize="16" Click="ConfigurationButton_Click"/>
+        <Button x:Name="SynchronizationButton" Content="Synchronisation" HorizontalAlignment="Left" Margin="155.867,165.981,0,0" VerticalAlignment="Top" Width="150.584" Height="32.318" FontSize="16"/>
+        <ComboBox x:Name="MicrophoneInputSelect" HorizontalAlignment="Left" Margin="155.867,207.54,0,0" VerticalAlignment="Top" Width="150.584" Height="26.891" SelectedIndex="0" FontSize="16">
+            <ComboBoxItem Cursor="Hand" Content="Kinect"/>
+            <ComboBoxItem Cursor="Hand" Content="Standard Input"/>
+        </ComboBox>
+        <Label x:Name="RecognizedCommandLabel_Copy" Content="Microphone input :" HorizontalAlignment="Left" Margin="20.79,204.872,0,0" VerticalAlignment="Top" Height="34.413" Width="144.258" FontSize="13.333"/>
+        <Canvas x:Name="GestureCanvas" HorizontalAlignment="Left" Height="717" Margin="320,10,0,0" VerticalAlignment="Top" Width="942">
+            <Label Content="Gesture detected :" Canvas.Left="678" Canvas.Top="681" Width="109"/>
+            <Label x:Name="GestureLabel" Content="" Canvas.Left="812" Canvas.Top="681" Width="120"/>
+        </Canvas>
+        <Canvas x:Name="KinectCanvas" HorizontalAlignment="Left" Height="717" Margin="320,10,0,0" VerticalAlignment="Top" Width="942" Panel.ZIndex="2"/>
+        <Image x:Name="KinectDisplay" Source="{Binding Bitmap}" Margin="320,10,10,10"/>
+        <Label x:Name="xLabel" Content="" HorizontalAlignment="Left" Margin="21,701,0,0" VerticalAlignment="Top" Width="44"/>
+        <Label x:Name="yLabel" Content="" HorizontalAlignment="Left" Margin="70,701,0,0" VerticalAlignment="Top" Width="52"/>
+        <Label x:Name="zLabel" Content="" HorizontalAlignment="Left" Margin="127,701,0,0" VerticalAlignment="Top" Width="45"/>
+        <DockPanel x:Name="inkPanel" Margin="320,10,10,10" Visibility="Hidden">
+            <Canvas 
+				x:Name="theRootCanvas" 
+				Background="#FFE5ECDB">
+                <InkCanvas x:Name="theInkCanvas" Background="#FFC92828" Height="242" ClipToBounds="False" SnapsToDevicePixels="True"/>
+                <Label x:Name="labelInfo" Content="Label" FontSize="24" Visibility="Hidden"/>
+            </Canvas>
+            <DataGrid
+				x:Name="resultGrid"
+				HeadersVisibility="None" 
+				ItemsSource="{Binding musics}" 
+				BorderThickness="0,1"
+				CellStyle="{StaticResource Body_Content_DataGrid_Centering}"
+				FontSize="16"
+                Visibility="Hidden">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Url}" Visibility="Hidden"/>
+                    <DataGridTextColumn Binding="{Binding ArtistName}"/>
+                    <DataGridTextColumn Binding="{Binding SongName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        <WrapPanel x:Name="inkButtonWrapper" HorizontalAlignment="Center" Margin="320, 500, 10, 10">
+            <Button x:Name="clearButton" Height="88" Content="Clear" />
+            <Button x:Name="closeButton" Height="88" Content="Close" />
+            <Button x:Name="recognizeButton" Height="88" Content="Recognize"/>
+        </WrapPanel>
+        <Rectangle HorizontalAlignment="Left" Height="254" Margin="10,269,0,0" Stroke="Black" VerticalAlignment="Top" Width="305"/>
+        <CheckBox x:Name="GestureOn" Content="Kinect" HorizontalAlignment="Left" Margin="21,293,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="SpeechOn" Content="Speech Recognition" HorizontalAlignment="Left" Margin="21,313,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="LeapOn" Content="Leap Motion" HorizontalAlignment="Left" Margin="21,333,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="InkOn" Content="Ink tablet" HorizontalAlignment="Left" Margin="21,353,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="MindWaveOn" Content="Mind Wave" HorizontalAlignment="Left" Margin="210,313,0,0" VerticalAlignment="Top" Height="15"/>
+        <CheckBox x:Name="MyoOn" Content="Myo" HorizontalAlignment="Left" Margin="210,333,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ControllerLabel" Content="" HorizontalAlignment="Left" Margin="21,389,0,0" VerticalAlignment="Top" Width="285"/>
+        <Label x:FieldModifier="public" x:Name="LeapLabel" Content="" HorizontalAlignment="Left" Margin="21,415,0,0" VerticalAlignment="Top" Width="285"/>
+    </Grid>
+</Window>
