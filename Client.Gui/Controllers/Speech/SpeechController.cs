@@ -12,7 +12,6 @@ using Alfred.Utils.Speech;
 using Microsoft.Speech.AudioFormat;
 using Microsoft.Speech.Recognition;
 using Microsoft.Speech.Recognition.SrgsGrammar;
-using Alfred.Model.Db.Repositories;
 
 namespace Alfred.Client.Gui.Controllers.Speech
 {
@@ -91,12 +90,14 @@ namespace Alfred.Client.Gui.Controllers.Speech
             var lights = Init.alfredClient.Http.Light.GetAll().Result;
 
             builder.CreateRule("piece", lights.Select(d => d.Name).ToList());
-            builder.CreateRule("artist", new MusicRepository().GetAllArtists().ToList());
-            builder.CreateRule("genre", new MusicRepository().GetAllGenres().ToList());
-            builder.CreateRule("playlist", new MusicRepository().GetAllPlaylists().ToList());
-            builder.CreateRule("mode", new ScenarioRepository().GetAll().Select(s=>s.Name).ToList());
-            builder.CreateRule("number", Enumerable.Range(0, 100));
-            builder.CreateRule("alfred", new CommandRepository().GetCommands());
+            
+            // TODO : call http services to get configs.
+            //builder.CreateRule("artist", new MusicRepository().GetAllArtists().ToList());
+            //builder.CreateRule("genre", new MusicRepository().GetAllGenres().ToList());
+            //builder.CreateRule("playlist", new MusicRepository().GetAllPlaylists().ToList());
+            //builder.CreateRule("mode", new ScenarioRepository().GetAll().Select(s=>s.Name).ToList());
+            //builder.CreateRule("number", Enumerable.Range(0, 100));
+            //builder.CreateRule("alfred", new CommandRepository().GetCommands());
 
             var writer = XmlWriter.Create(Paths.path_grammar);
             xmlGrammar.WriteSrgs(writer);

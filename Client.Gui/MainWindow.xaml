@@ -25,7 +25,6 @@
         <Label x:Name="RecognizedCommandLabel" Content="Commande reconnu :" HorizontalAlignment="Left" Margin="20.79,110.797,0,0" VerticalAlignment="Top" Height="34.413" Width="144.258" FontSize="13.333"/>
         <Label x:Name="RecognizedText" Content="" HorizontalAlignment="Left" Margin="164.358,76.257,0,0" VerticalAlignment="Top" Height="34.412" Width="108.636" FontSize="8"/>
         <Label x:Name="RecognizedCommand" Content="" HorizontalAlignment="Left" Margin="164.358,110.797,0,0" VerticalAlignment="Top" Height="34.413" Width="108.636" FontSize="8"/>
-        <Button x:Name="ConfigurationButton" Content="Configuration" HorizontalAlignment="Left" Margin="20.79,165.981,0,0" VerticalAlignment="Top" Width="128.995" Height="32.318" FontSize="16" Click="ConfigurationButton_Click"/>
         <Button x:Name="SynchronizationButton" Content="Synchronisation" HorizontalAlignment="Left" Margin="155.867,165.981,0,0" VerticalAlignment="Top" Width="150.584" Height="32.318" FontSize="16"/>
         <ComboBox x:Name="MicrophoneInputSelect" HorizontalAlignment="Left" Margin="155.867,207.54,0,0" VerticalAlignment="Top" Width="150.584" Height="26.891" SelectedIndex="0" FontSize="16">
             <ComboBoxItem Cursor="Hand" Content="Kinect"/>

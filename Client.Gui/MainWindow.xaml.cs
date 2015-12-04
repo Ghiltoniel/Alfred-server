@@ -114,11 +114,6 @@ namespace Alfred.Client.Gui
             }));
         }
 
-        private void ConfigurationButton_Click(object sender, RoutedEventArgs e)
-        {
-            var config = new ConfigurationForm();
-            config.Show();
-        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ReloadProperties();

@@ -170,12 +170,6 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="ConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfigurationForm.Designer.cs">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\Ink\InkEventsHandlers.cs" />
     <Compile Include="Controllers\MindWave\MindWaveController.cs" />
     <Compile Include="Controllers\MindWave\ThinkGearEventsHandlers.cs" />
@@ -231,9 +225,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="ConfigurationForm.resx">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -305,10 +296,6 @@
     <ProjectReference Include="..\Model.Core\Model.Core.csproj">
       <Project>{0ef534b6-5909-4eb7-9821-d5fe82f6a7f1}</Project>
       <Name>Model.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model.Db\Model.Db.csproj">
-      <Project>{e5cfe928-52ba-4ca1-b837-90cc763f50c6}</Project>
-      <Name>Model.Db</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{5139cbe2-ef46-4f83-aed3-72b88ff55dc5}</Project>
