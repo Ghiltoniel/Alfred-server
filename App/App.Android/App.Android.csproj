@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F34EF69-30E4-43BE-B53A-A956D45B272D}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AlfredApp.Droid</RootNamespace>
+    <AssemblyName>AlfredApp.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidUseLatestPlatformSdk />
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+    <JavaMaximumHeapSize />
+    <JavaOptions />
+    <AndroidUseLatestPlatformSdk />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>0ff48845</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.v13">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v13.20.0.0.4\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v4.20.0.0.4\lib\MonoAndroid32\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.Android, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashScreen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\Drawable\SplashScreen.xml">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Values\Style.xml">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Drawable\background.jpg" />
+    <AndroidResource Include="Resources\Values\Color.xml" />
+    <AndroidResource Include="Resources\Drawable\connected.png" />
+    <AndroidResource Include="Resources\Drawable\next.png" />
+    <AndroidResource Include="Resources\Drawable\pause.png" />
+    <AndroidResource Include="Resources\Drawable\play.png" />
+    <AndroidResource Include="Resources\Drawable\prev.png" />
+    <AndroidResource Include="Resources\Drawable\volume.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ab_bottom_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ab_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ab_stacked_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ab_texture_tile_example.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ab_transparent_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cab_background_bottom_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cab_background_top_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\list_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\list_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\menu_dropdown_panel_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\progress_bg_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\progress_primary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\progress_secondary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_disabled_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ab_bottom_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ab_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ab_stacked_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ab_texture_tile_example.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ab_transparent_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cab_background_bottom_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cab_background_top_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\list_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\list_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_dropdown_panel_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_bg_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_primary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_secondary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_disabled_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ab_bottom_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ab_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ab_stacked_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ab_texture_tile_example.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ab_transparent_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\cab_background_bottom_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\cab_background_top_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\list_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\list_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\menu_dropdown_panel_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\progress_bg_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\progress_primary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\progress_secondary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_disabled_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ab_bottom_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ab_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ab_stacked_solid_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ab_texture_tile_example.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ab_transparent_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cab_background_bottom_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cab_background_top_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\list_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\list_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\menu_dropdown_panel_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\progress_bg_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\progress_primary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\progress_secondary_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_default_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_disabled_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_focused_example.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_pressed_example.9.png" />
+    <AndroidResource Include="Resources\Drawable\tab_indicator_ab_example.xml" />
+    <AndroidResource Include="Resources\Drawable\spinner_background_ab_example.xml" />
+    <AndroidResource Include="Resources\Drawable\selectable_background_example.xml" />
+    <AndroidResource Include="Resources\Drawable\progress_horizontal_example.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_cab_done_example.xml" />
+    <AndroidResource Include="Resources\Drawable\ab_background_textured_example.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_play.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_play.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_play.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_play.png" />
+    <AndroidResource Include="Resources\Drawable\ic_action_play.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_next_item.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_pause.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_previous_item.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_next_item.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_pause.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_previous_item.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_pause.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_next_item.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_previous_item.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_next_item.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_pause.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_previous_item.png" />
+    <AndroidResource Include="Resources\Drawable\djamradio.jpg" />
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\Drawable\speech.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Client.Core\Client.Core.csproj">
+      <Project>{d3494825-a414-4e64-af39-e9ee815a1c7f}</Project>
+      <Name>Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model.Core\Model.Core.csproj">
+      <Project>{0ef534b6-5909-4eb7-9821-d5fe82f6a7f1}</Project>
+      <Name>Model.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App\App.csproj">
+      <Project>{c9e29306-5b55-4727-b2e9-2998fb1d97c7}</Project>
+      <Name>App</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

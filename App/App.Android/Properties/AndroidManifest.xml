@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.nam.player" android:versionCode="2" android:versionName="0.0.2">
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
+	<application android:label="NAM Player" android:icon="@drawable/Icon"></application>
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+</manifest>
