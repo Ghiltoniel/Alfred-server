@@ -22,11 +22,17 @@ namespace Alfred.Model.Db.Repositories
         {
             using (var db = new AlfredContext())
             {
-                db.Configurations.Add(new Configuration()
+                var configDb = db.Configurations.SingleOrDefault(c => c.Name == config.Name);
+
+                if (configDb == null)
+                {
+                    configDb = new Configuration()
                     {
-                        Name = config.Name,
-                        Value = config.Value
-                    });
+                        Name = config.Name
+                    };
+                    db.Configurations.Add(configDb);
+                }
+                configDb.Value = config.Value;
                 db.SaveChanges();
             }
         }

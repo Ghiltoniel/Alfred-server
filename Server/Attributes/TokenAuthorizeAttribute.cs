@@ -12,21 +12,27 @@ namespace Alfred.Server.Attributes
 {
     public class TokenAuthorizeAttribute : AuthorizeAttribute
     {
-        protected override bool IsAuthorized(HttpActionContext actionContext)
+        public override void OnAuthorization(HttpActionContext actionContext)
         {
-            var headerValues = actionContext.Request.Headers.GetValues("token");
+            IEnumerable<string> headerValues;
+            var headerExists = actionContext.Request.Headers.TryGetValues("token", out headerValues);
+
+            if (!headerExists)
+            {
+                HandleUnauthorizedRequest(actionContext);
+                return;
+            }
+
             var token = headerValues.FirstOrDefault();
             if (!string.IsNullOrEmpty(token))
             {
                 var verifiedToken = UserManager.ValidateToken(token);
-                return string.IsNullOrEmpty(verifiedToken);
+                if (string.IsNullOrEmpty(verifiedToken))
+                {
+                    HandleUnauthorizedRequest(actionContext);
+                    return;
+                }
             }
-            return base.IsAuthorized(actionContext);
-        }
-
-        public override Task OnAuthorizationAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
-        {
-            return base.OnAuthorizationAsync(actionContext, cancellationToken);
         }
     }
 }

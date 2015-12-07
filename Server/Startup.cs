@@ -10,6 +10,8 @@ using Owin;
 using System;
 using System.IO;
 using System.Diagnostics;
+using System.Net;
+using Ionic.Zip;
 
 namespace Alfred.Server
 {
@@ -29,35 +31,40 @@ namespace Alfred.Server
             //Minifier.MinifyJs();
             //Minifier.MinifyCss();
 
-            // Turns on static files, directory browsing, and default files.
-            
-            var gitRepo = "https://github.com/Ghiltoniel/Alfred-ionic.git";
+            // Turns on static files, directory browsing, and default files.            
             var wwwDir = Path.Combine(Environment.CurrentDirectory, "www_app");
-            string gitCloneArgument = string.Format(@"clone ""{0}"" ""{1}""", gitRepo, wwwDir);
+            var tempDir = Path.Combine(Environment.CurrentDirectory, "temp_www");
 
-            var directoryInfo = new DirectoryInfo(wwwDir);
-            if (directoryInfo.Exists && DateTime.UtcNow.Subtract(directoryInfo.CreationTimeUtc).TotalDays > 1)
+            var gitUrl = "https://github.com/Ghiltoniel/Alfred-ionic/archive/master.zip";
+            var zipFile = "app.zip";
+
+            var wwwDirInfo = new DirectoryInfo(wwwDir);
+
+            if (!wwwDirInfo.Exists || DateTime.UtcNow.Subtract(wwwDirInfo.LastWriteTimeUtc).TotalDays > 1)
             {
-                directoryInfo.Delete();
-                var process = Process.Start("git", gitCloneArgument);
-                process.WaitForExit(100000);
+                new WebClient().DownloadFile(gitUrl, zipFile);
+
+                if (wwwDirInfo.Exists)
+                    wwwDirInfo.Delete(true);
+
+                using (ZipFile zip = ZipFile.Read(zipFile))
+                {
+                    zip.ExtractAll(tempDir, ExtractExistingFileAction.OverwriteSilently);
+
+                    var tempDirInfo = new DirectoryInfo(Path.Combine(tempDir, "Alfred-ionic-master", "www"));
+                    tempDirInfo.MoveTo(wwwDir);
+                }
+                File.Delete(zipFile);
+                Directory.Delete(tempDir, true);
             }
 
             app.UseFileServer(new FileServerOptions
             {
                 RequestPath = new PathString(""),
-                FileSystem = new PhysicalFileSystem(Path.Combine(wwwDir, "www")),
+                FileSystem = new PhysicalFileSystem(wwwDir),
                 EnableDirectoryBrowsing = true
             });
-
-            var options = new CookieAuthenticationOptions
-            {
-                AuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
-                LoginPath = CookieAuthenticationDefaults.LoginPath,
-                LogoutPath = CookieAuthenticationDefaults.LogoutPath
-            };
-
-            app.UseCookieAuthentication(options);
+            
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
