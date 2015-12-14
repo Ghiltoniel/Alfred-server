@@ -54,13 +54,32 @@ namespace Alfred.Server.WebApi.Controllers
 
         [HttpGet]
         [Route("device/hue/bridges/{ip}/register")]
-        public virtual async Task<string> RegisterHueBridge(string ip)
+        public virtual async Task<IHttpActionResult> RegisterHueBridge(string ip)
         {
-            return await HueInterface.HueHelper.RegisterBridgeIp(
-                ip,
-                string.Concat("device-", Guid.NewGuid()),
-                string.Concat("app-", Guid.NewGuid())
-            );
+            try {
+                var apiKey = await HueInterface.HueHelper.RegisterBridgeIp(
+                    ip,
+                    string.Concat("device-", Guid.NewGuid()).Substring(0, 19),
+                    string.Concat("app-", Guid.NewGuid()).Substring(0, 19)
+                );
+                var repo = new ConfigurationRepository();
+                repo.Save(new Model.Core.ConfigurationModel()
+                {
+                    Name = "Device_HueBridgeIp",
+                    Value = ip
+                });
+                repo.Save(new Model.Core.ConfigurationModel()
+                {
+                    Name = "Device_HueBridgeUser",
+                    Value = apiKey
+                });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
