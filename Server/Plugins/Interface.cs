@@ -4,6 +4,7 @@ using System.Linq;
 using Alfred.Model.Core;
 using Alfred.Utils.Plugins;
 using Microsoft.Web.Administration;
+using Alfred.Utils;
 
 namespace Alfred.Server.Plugins
 {
@@ -30,49 +31,24 @@ namespace Alfred.Server.Plugins
             WebSocketServer.Broadcast(task);
         }
 
-        public void RestartPlayer()
-        {
-            var players = Process.GetProcessesByName("AlfredPlayer");
-            if(players.Any())
-            {
-                foreach (var player in players)
-                    player.Kill();
-            }
-            Process.Start(@"C:\Users\guillaume\Documents\Visual Studio 2012\Projects\Domotique\Domotique\AlfredPlayer\bin\Debug\AlfredPlayer.exe");
-        }
-
-        public void RestartWebsite()
-        {
-            var manager = new ServerManager();
-            var site = manager.Sites.FirstOrDefault(s => s.Name == arguments["WebsiteName"]);
-            try
-            {
-                if (site != null)
-                {
-                    site.Stop();
-                    site.Start();
-                }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
         public void ReloadPlugins()
         {
             Launcher.LoadPlugins();
             result.toSpeakString = "Veuillez patienter, je recharge les modules";
         }
 
-        public void ReloadSpeech()
+        public void ReloadDevices()
         {
-
+            CommonManagers.LightManager.SetInterfaces();
+            result.toSpeakString = "Veuillez patienter, je recharge les lumières";
         }
 
-        public void SearchTablet()
+        public void ReloadSpeech()
         {
-
+            WebSocketServer.Broadcast(new AlfredTask()
+            {
+                Command = "ReloadSpeech"
+            });
         }
         #endregion
     }

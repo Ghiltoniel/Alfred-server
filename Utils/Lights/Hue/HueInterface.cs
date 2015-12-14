@@ -12,20 +12,28 @@ namespace Alfred.Utils.Lights.Hue
 {
     public class HueInterface : ILightInterface
     {
-        private static ILocalHueClient Client;
-        private static List<LightModel> _devices;
+        private ILocalHueClient _client;
+        private List<LightModel> _devices;
 
-        static HueInterface()
+        public HueInterface(string ip, string appKey)
         {
-            Client = new LocalHueClient(LightConfigurations.HueBridgeIp);
-            Client.Initialize(LightConfigurations.HueBridgeUser);
+            _client = new LocalHueClient(ip);
+            _client.Initialize(appKey);
+        }
+
+        public string Name
+        {
+            get
+            {
+                return "Philips Hue";
+            }
         }
 
         public async Task<List<LightModel>> GetDevices()
         {            
             try
             {
-                var lights = await Client.GetLightsAsync();
+                var lights = await _client.GetLightsAsync();
                 _devices = lights.Select(l => new LightModel(
                     l.Id,
                     l.Name,
@@ -47,7 +55,7 @@ namespace Alfred.Utils.Lights.Hue
 
         public void Light(string key, bool? on = null, byte? bri = null, int? hue = null, int? sat = null)
         {
-            var test = Client.SendCommandAsync(new LightCommand
+            var test = _client.SendCommandAsync(new LightCommand
             {
                 Brightness = bri,
                 Hue = hue,
@@ -60,7 +68,7 @@ namespace Alfred.Utils.Lights.Hue
         {
             try
             {
-                await Client.SendCommandAsync(new LightCommand
+                await _client.SendCommandAsync(new LightCommand
                 {
                     Brightness = bri,
                     Hue = hue,
@@ -76,7 +84,7 @@ namespace Alfred.Utils.Lights.Hue
 
         public async void Toggle(string key, bool on)
         {
-            await Client.SendCommandAsync(new LightCommand
+            await _client.SendCommandAsync(new LightCommand
             {
                 On = on
             }, new[] { key });
@@ -84,10 +92,25 @@ namespace Alfred.Utils.Lights.Hue
 
         public async void ToggleAll(bool on)
         {
-            await Client.SendCommandAsync(new LightCommand
+            await _client.SendCommandAsync(new LightCommand
             {
                 On = on
             });
+        }
+
+        public static class HueHelper
+        {
+            public static async Task<IEnumerable<string>> GetBridgesIp()
+            {
+                IBridgeLocator locator = new HttpBridgeLocator();
+                return await locator.LocateBridgesAsync(TimeSpan.FromSeconds(5));
+            }
+
+            public static async Task<string> RegisterBridgeIp(string ip, string appName, string deviceName)
+            {
+                ILocalHueClient client = new LocalHueClient(ip);
+                return await client.RegisterAsync(appName, deviceName);
+            }
         }
     }
 }

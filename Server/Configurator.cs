@@ -21,8 +21,7 @@ namespace Alfred.Server
             {"WebSocketServerPort", 13100},
             {"WebSocketServerHostname", "localhost"},
             {"WebApiServerHostname", "localhost"},
-            {"WebApiServerPort", 80},
-            {"WebsiteName", "AlfredWebsite"}
+            {"WebApiServerPort", 80}
         };
 
         public Configurator()

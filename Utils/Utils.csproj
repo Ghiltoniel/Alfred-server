@@ -145,10 +145,8 @@
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Lights\Hue\HueInterface.cs" />
-    <Compile Include="Lights\LightConfigurations.cs" />
     <Compile Include="Managers\LightManager.cs" />
     <Compile Include="Lights\Telldus\TelldusInterface.cs" />
-    <Compile Include="Lights\Telldus\TelldusLight.cs" />
     <Compile Include="Managers.cs" />
     <Compile Include="Managers\Init.cs" />
     <Compile Include="Managers\PlayerManager.cs" />

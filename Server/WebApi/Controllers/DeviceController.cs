@@ -7,6 +7,11 @@ using Alfred.Plugins.Manager;
 using Alfred.Utils;
 using Alfred.Utils.Managers;
 using Alfred.Server.Attributes;
+using Alfred.Model.Db.Repositories;
+using System.Linq;
+using Alfred.Utils.Lights.Hue;
+using Alfred.Utils.Lights.Telldus;
+using System;
 
 namespace Alfred.Server.WebApi.Controllers
 {
@@ -14,6 +19,68 @@ namespace Alfred.Server.WebApi.Controllers
     public class DeviceController : ApiController
     {
         private readonly LightManager _lightManager = CommonManagers.LightManager;
+        
+        [HttpGet]
+        [Route("device/interfaces")]
+        public virtual IEnumerable<LightInterfaceModel> Interfaces()
+        {
+            var configurations = new ConfigurationRepository().GetAll();
+            var ret = new List<LightInterfaceModel>();
+            ret.Add(new LightInterfaceModel()
+            {
+                Id = "device-hue",
+                Name = _lightManager.DeviceInterfaces.Single(t => t is HueInterface).Name,
+                Enabled = configurations.Single(c => c.Name == "Device_HueEnabled").Value == "1",
+                Configurations = configurations.Where(c => c.Name.StartsWith("Device_Hue"))
+            });
+
+            ret.Add(new LightInterfaceModel()
+            {
+                Id = "device-telldus",
+                Name = _lightManager.DeviceInterfaces.Single(t => t is TelldusInterface).Name,
+                Enabled = configurations.Single(c => c.Name == "Device_TelldusEnabled").Value == "1",
+                Configurations = configurations.Where(c => c.Name.StartsWith("Device_Telldus"))
+            });
+
+            return ret;
+        }
+
+        [HttpGet]
+        [Route("device/hue/bridges")]
+        public virtual async Task<IEnumerable<string>> GetHueBridgesIp()
+        {
+            return await HueInterface.HueHelper.GetBridgesIp();
+        }
+
+        [HttpGet]
+        [Route("device/hue/bridges/{ip}/register")]
+        public virtual async Task<string> RegisterHueBridge(string ip)
+        {
+            return await HueInterface.HueHelper.RegisterBridgeIp(
+                ip,
+                string.Concat("device-", Guid.NewGuid()),
+                string.Concat("app-", Guid.NewGuid())
+            );
+        }
+
+        [HttpPost]
+        [Route("device/saveInterfaces")]
+        public virtual IHttpActionResult SaveInterfaces(IEnumerable<LightInterfaceModel> model)
+        {
+            var repo = new ConfigurationRepository();
+            
+            foreach(var m in model)
+            {
+                foreach(var lc in m.Configurations)
+                {
+                    repo.Save(lc);
+                }
+            }
+
+            _lightManager.SetInterfaces();
+
+            return Ok();
+        }
 
         [HttpGet]
         [Route("device/list")]

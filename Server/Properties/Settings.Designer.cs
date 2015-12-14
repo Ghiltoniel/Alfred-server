@@ -73,54 +73,6 @@ namespace Alfred.Server.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Home")]
-        public string WebsiteName {
-            get {
-                return ((string)(this["WebsiteName"]));
-            }
-            set {
-                this["WebsiteName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.jazzradio.fr/radio/webradio/jazz")]
-        public string JazzRadio {
-            get {
-                return ((string)(this["JazzRadio"]));
-            }
-            set {
-                this["JazzRadio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.ledjamradio.com/playlist.m3u")]
-        public string DjamRadio {
-            get {
-                return ((string)(this["DjamRadio"]));
-            }
-            set {
-                this["DjamRadio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.di.fm/")]
-        public string DIRadio {
-            get {
-                return ((string)(this["DIRadio"]));
-            }
-            set {
-                this["DIRadio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("TBtbmYFodVxjCarqzTjih1k0DAqiu1Bx")]
         public string PushBulletApiKey {
             get {
@@ -128,42 +80,6 @@ namespace Alfred.Server.Properties {
             }
             set {
                 this["PushBulletApiKey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("19850665")]
-        public string FreeMobileUser {
-            get {
-                return ((string)(this["FreeMobileUser"]));
-            }
-            set {
-                this["FreeMobileUser"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gsoRy0VWBCbK9R")]
-        public string FreeMobileKey {
-            get {
-                return ((string)(this["FreeMobileKey"]));
-            }
-            set {
-                this["FreeMobileKey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\guillaume\\Documents\\Projects\\Alfred\\AlfredServer\\Web\\public")]
-        public string StaticWebsitepath {
-            get {
-                return ((string)(this["StaticWebsitepath"]));
-            }
-            set {
-                this["StaticWebsitepath"] = value;
             }
         }
     }

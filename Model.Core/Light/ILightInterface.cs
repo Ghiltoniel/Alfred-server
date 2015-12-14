@@ -5,6 +5,8 @@ namespace Alfred.Model.Core.Light
 {
     public interface ILightInterface
     {
+        string Name { get; }
+
         Task<List<LightModel>> GetDevices();
 
         void Toggle(string key, bool on);

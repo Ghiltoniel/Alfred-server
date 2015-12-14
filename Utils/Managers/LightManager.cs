@@ -44,16 +44,26 @@ namespace Alfred.Utils.Managers
             await SetDevices();
         }
 
-        void SetInterfaces()
+        public void SetInterfaces()
         {
             var configurations = new ConfigurationRepository().GetAll();
-            if (string.IsNullOrEmpty(LightConfigurations.HueBridgeIp))
+
+            DeviceInterfaces.Clear();
+            if(configurations.Single(c => c.Name == "Device_HueEnabled").Value == "1")
             {
-                LightConfigurations.HueBridgeIp = configurations.Single(c => c.Name == "Device_HueBridgeIp").Value;
-                LightConfigurations.HueBridgeUser = configurations.Single(c => c.Name == "Device_HueBridgeUser").Value;
+                var hueBridgeIp = configurations.Single(c => c.Name == "Device_HueBridgeIp").Value;
+                var hueBridgeUser = configurations.Single(c => c.Name == "Device_HueBridgeUser").Value;
+                DeviceInterfaces.Add(new HueInterface(hueBridgeIp, hueBridgeUser));
             }
-            DeviceInterfaces.Add(new HueInterface());
-            DeviceInterfaces.Add(new TelldusInterface());
+
+            if (configurations.Single(c => c.Name == "Device_TelldusEnabled").Value == "1")
+            {
+                var tck = configurations.Single(c => c.Name == "Device_TelldusConsumerKey").Value;
+                var tcks = configurations.Single(c => c.Name == "Device_TelldusConsumerSecret").Value;
+                var tt = configurations.Single(c => c.Name == "Device_TelldusToken").Value;
+                var tts = configurations.Single(c => c.Name == "Device_TelldusTokenSecret").Value;
+                DeviceInterfaces.Add(new TelldusInterface(tck, tcks, tt, tts));
+            }
         }
 
         public async Task SetDevices()

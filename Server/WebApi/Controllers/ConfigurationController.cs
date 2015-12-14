@@ -24,17 +24,26 @@ namespace Alfred.Server.WebApi.Controllers
             return _repo.GetAll();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("save")]
-        public IHttpActionResult Save(string name, string value)
+        public IHttpActionResult Save(ConfigurationModel model)
         {
-            _repo.Save(new ConfigurationModel()
-            {
-                Name = name,
-                Value = value
-            });
+            _repo.Save(model);
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("saveBatch")]
+        public IHttpActionResult SaveBatch(IEnumerable<ConfigurationModel> model)
+        {
+            foreach (var c in model) {
+                _repo.Save(c);
+            };
+
+            Launcher.LoadPlugins();
+            return Ok();
+        }
+
     }
 }

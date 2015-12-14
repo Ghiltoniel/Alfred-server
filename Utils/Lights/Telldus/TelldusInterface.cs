@@ -11,21 +11,44 @@ namespace Alfred.Utils.Lights.Telldus
 {
     public class TelldusInterface : ILightInterface
     {
-        static readonly ConnectionDetails Connection;
-        static List<TellStickLiveDevice> _devices;
+        private readonly ConnectionDetails _connection;
+        private List<TellStickLiveDevice> _devices;
 
-        static TelldusInterface()
+        public TelldusInterface(string ck, string csk, string t, string ts)
         {
-            Connection = TelldusLight.connection;
+            _connection = new ConnectionDetails(
+                ck,
+                csk,
+                t,
+                ts);
+
             _devices = new List<TellStickLiveDevice>();
+        }
+
+        public string Name
+        {
+            get
+            {
+                return "Telldus";
+            }
         }
 
         public async Task<List<LightModel>> GetDevices()
         {
             try
             {
-                var task = new Task(GetTellstickDevicesAsync);
-                task.RunSynchronously();
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        _devices = TellstickLiveController.GetDevices(_connection);
+                    }
+                    catch (Exception)
+                    {
+                        _devices = new List<TellStickLiveDevice>();
+                    }
+                });
+
                 return _devices.Select(telldus =>
                     new LightModel(
                     telldus.id.ToString(CultureInfo.InvariantCulture),
@@ -41,18 +64,6 @@ namespace Alfred.Utils.Lights.Telldus
             }
         }
 
-        private void GetTellstickDevicesAsync()
-        {
-            try
-            {
-                _devices = TellstickLiveController.GetDevices(Connection);
-            }
-            catch (Exception)
-            {
-                _devices = new List<TellStickLiveDevice>();
-            }
-        }
-
         public async void Light(string key, bool? on = null, byte? bri = null, int? hue = null, int? sat = null)
         {
             int id;
@@ -65,8 +76,8 @@ namespace Alfred.Utils.Lights.Telldus
             try
             {                
                 var task = bri.HasValue && deviceModel.DimEnabled ?
-                        new Task(() => TellstickLiveController.Dim(id, (int)bri, Connection)) :
-                        new Task(() => TellstickLiveController.Action(id, on.HasValue && on.Value ? "turnOn" : "turnOff", Connection));
+                        new Task(() => TellstickLiveController.Dim(id, (int)bri, _connection)) :
+                        new Task(() => TellstickLiveController.Action(id, on.HasValue && on.Value ? "turnOn" : "turnOff", _connection));
 
                 task.RunSynchronously();
                 await task;
@@ -97,7 +108,7 @@ namespace Alfred.Utils.Lights.Telldus
 
             try
             {
-                Task task = new Task(() => TellstickLiveController.Action(id, on ? "turnOn" : "turnOff", Connection));
+                Task task = new Task(() => TellstickLiveController.Action(id, on ? "turnOn" : "turnOff", _connection));
                 task.RunSynchronously();
                 await task;
             }
@@ -111,7 +122,7 @@ namespace Alfred.Utils.Lights.Telldus
         {
             try
             {
-                var task = new Task(() => TellstickLiveController.TurnAll(on, Connection));
+                var task = new Task(() => TellstickLiveController.TurnAll(on, _connection));
                 task.Start();
                 await task;
             }

@@ -15,14 +15,6 @@ namespace Alfred.Plugins
         public override void Initialize()
         {
             base.Initialize();
-            var hueIp = "127.0.0.1";
-            var hueUser = "developper";
-
-            hueIp = configs.First(c => c.Key == "Device_HueBridgeIp").Value;
-            hueUser = configs.First(c => c.Key == "Device_HueBridgeUser").Value;
-
-            LightConfigurations.HueBridgeIp = hueIp;
-            LightConfigurations.HueBridgeUser = hueUser;
 
             // Preload lights
             CommonManagers.LightManager.SetDevices();

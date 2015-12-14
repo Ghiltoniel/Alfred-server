@@ -39,6 +39,7 @@
     <Compile Include="Interface\ControllerAbstract.cs" />
     <Compile Include="Interface\ControllerInterface.cs" />
     <Compile Include="Light\ILightInterface.cs" />
+    <Compile Include="Light\LightInterfaceModel.cs" />
     <Compile Include="Light\LightModel.cs" />
     <Compile Include="Music\GroovesharkSong.cs" />
     <Compile Include="Music\PlayerStatus.cs" />
