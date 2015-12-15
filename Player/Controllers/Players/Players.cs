@@ -7,6 +7,7 @@ namespace AlfredPlayer
     class Players
     {
         public static GroovesharkPlayer GroovesharkPlayer;
+        public static YoutubePlayer YoutubePlayer;
         public static DigitalyImportedPlayer DigitalyImportedPlayer;
         public static UrlPlayer UrlPlayer;
         public static WMPPlayer WMPPlayer;
@@ -27,6 +28,12 @@ namespace AlfredPlayer
                 if (DigitalyImportedPlayer == null)
                     DigitalyImportedPlayer = new DigitalyImportedPlayer();
                 return DigitalyImportedPlayer;
+            }
+            if (inputFile.Contains("youtube"))
+            {
+                if (YoutubePlayer == null)
+                    YoutubePlayer = new YoutubePlayer();
+                return YoutubePlayer;
             }
             if (inputFile.StartsWith("http://") || inputFile.StartsWith("https://"))
             {

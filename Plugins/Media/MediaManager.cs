@@ -412,6 +412,11 @@ namespace Alfred.Plugins
 
         public void SynchronizePlayers()
         {
+            if(!Playlists.ContainsKey(CurrentChannel))
+            {
+                Playlists.Add(CurrentChannel, new SortedList<int, Music>());
+            }
+
             if (!Playlists[CurrentChannel].ContainsKey(Statuts[CurrentChannel].CurrentPlaylistIndex))
                 return;
 

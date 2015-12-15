@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Controllers\Players\APlayer.cs" />
     <Compile Include="Controllers\Players\DigitalyImporterPlayer.cs" />
+    <Compile Include="Controllers\Players\YoutubePlayer.cs" />
     <Compile Include="Controllers\Players\GroovesharkPlayer.cs" />
     <Compile Include="Controllers\Players\IPlayer.cs" />
     <Compile Include="Controllers\Players\Players.cs" />
