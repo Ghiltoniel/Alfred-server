@@ -9,7 +9,7 @@ namespace Alfred.Model.Db.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(AlfredContext context)
@@ -57,6 +57,13 @@ namespace Alfred.Model.Db.Migrations
                 new Path() { Name = "Music", Value = @"\\192.168.1.32\Musiques" },
                 new Path() { Name = "Series", Value = @"\\192.168.1.32\Séries" },
                 new Path() { Name = "WebsiteRessources", Value = @"C:\inetpub\wwwroot\Home\Ressources\Text" }
+            );
+
+            context.RadioDbs.AddOrUpdate(
+                p => p.BaseName,
+                new RadioDb() { BaseName = "JazzRadio", BaseUrl = "http://www.jazzradio.fr/radio/webradio/jazz", DisplayName = "Jazz Radio", ThumbnailUrl = "http://www.jazzradio.fr/assets/logo.jpg", HasSubsetRadios = true },
+                new RadioDb() { BaseName = "DjamRadio", BaseUrl = "http://www.ledjamradio.com/playlist.m3u", DisplayName = "Djam Radio", ThumbnailUrl = "http://www.ledjamradio.com/gfx/logo.png", HasSubsetRadios = false },
+                new RadioDb() { BaseName = "DIRadio", BaseUrl = "http://www.di.fm/", DisplayName = "Digitally Imported", ThumbnailUrl = "http://www.di.fm/assets/flux/branding/logo-di-e9580dd4ef317e3a977539651162ff5f.png", HasSubsetRadios = true }
             );
 
             context.Users.AddOrUpdate(

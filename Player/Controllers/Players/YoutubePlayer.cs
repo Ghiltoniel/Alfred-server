@@ -18,7 +18,7 @@ namespace AlfredPlayer.Controllers.Players
             browser = Init.browser;
             browser.ObjectForScripting = new YoutubeScriptManager(this);
 
-            commandYoutubeDelegate = CommandGrooveshark;
+            commandYoutubeDelegate = CommandYoutube;
             browser.DocumentCompleted += browser_DocumentCompleted;
         }
 
@@ -59,13 +59,13 @@ namespace AlfredPlayer.Controllers.Players
             browser.Invoke(commandYoutubeDelegate);
         }
 
-        public void CommandGrooveshark()
+        public void CommandYoutube()
         {
             var head = browser.Document.GetElementsByTagName("head")[0];
             if (currentArgs != null)
-                browser.Document.InvokeScript(youtubeCommand + "Grooveshark", currentArgs);
+                browser.Document.InvokeScript(youtubeCommand + "Youtube", currentArgs);
             else
-                browser.Document.InvokeScript(youtubeCommand + "Grooveshark");
+                browser.Document.InvokeScript(youtubeCommand + "Youtube");
         }
 
         private void browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -80,9 +80,9 @@ namespace AlfredPlayer.Controllers.Players
                 var lastDate = new Date();
                 var lastMs = currentDate.getTime();
                 
-				function LoadGrooveshark() {
+				function LoadYoutube() {
 					window.onbeforeunload = null;
-					window.Grooveshark.setSongStatusCallback(StatusCallback);
+					window.Youtube.setSongStatusCallback(StatusCallback);
 				}
 
 				function StatusCallback(song) {
@@ -101,29 +101,71 @@ namespace AlfredPlayer.Controllers.Players
                     window.external.UpdateStatus(song.status, song.song.calculatedDuration, song.song.position);
 				}
 
-				function PlayPauseGrooveshark() {
-					window.Grooveshark.togglePlayPause();
+				function PlayPauseYoutube() {
+					window.Youtube.togglePlayPause();
 				}
 
-				function PauseGrooveshark() {
-					window.Grooveshark.pause();
+				function PauseYoutube() {
+					window.Youtube.pause();
 				}
 
-                function SetPositionGrooveshark(pos) {
-					window.Grooveshark.seekToPosition(pos);
+                function SetPositionYoutube(pos) {
+					window.Youtube.seekToPosition(pos);
 				}
 
-                function SetVolumeGrooveshark(volume) {
-					window.Grooveshark.setVolume(volume);
+                function SetVolumeYoutube(volume) {
+					window.Youtube.setVolume(volume);
 				}
 
-                function StopGrooveshark() {
-					var song = window.Grooveshark.getCurrentSongStatus();
-						window.Grooveshark.pause();
+                function StopYoutube() {
+					var song = window.Youtube.getCurrentSongStatus();
+						window.Youtube.pause();
 				}
+
+                var tag = document.createElement('script');
+
+                tag.src = ""https://www.youtube.com/iframe_api\"";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                // 3. This function creates an <iframe> (and YouTube player)
+                //    after the API code downloads.
+                var player;
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('player', {
+                        height: '390',
+                        width: '640',
+                        videoId: 'M7lc1UVf-VE',
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                }
+
+                // 4. The API will call this function when the video player is ready.
+                function onPlayerReady(event) {
+                    event.target.playVideo();
+                }
+
+                // 5. The API calls this function when the player's state changes.
+                //    The function indicates that when playing a video (state=1),
+                //    the player should play for six seconds and then stop.
+                var done = false;
+                function onPlayerStateChange(event) {
+                    if (event.data == YT.PlayerState.PLAYING && !done) {
+                        setTimeout(stopVideo, 6000);
+                        done = true;
+                    }
+                }
+                
+                function StopYoutube()
+                {
+                    player.stopVideo();
+                }
 			";
             head.AppendChild(scriptEl);
-            browser.Document.InvokeScript("LoadGrooveshark");
+            browser.Document.InvokeScript("LoadYoutube");
         }
     }
 

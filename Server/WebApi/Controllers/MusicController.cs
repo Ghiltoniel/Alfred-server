@@ -48,31 +48,24 @@ namespace Alfred.Server.WebApi.Controllers
 
         [HttpGet]
         [Route("radios")]
-        public virtual IEnumerable<Radio> RadioList()
+        public virtual IEnumerable<Model.Core.Music.Radio> RadioList()
         {
-            var radios = new List<ARadio>();
-            foreach (SettingsProperty currentProperty in Settings.Default.Properties)
-            {
-                var radio = ARadio.GetARadio(currentProperty.Name);
-                if (radio != null)
-                    radios.Add(radio);
-            }
-            return radios;
+            return _musicRepo.GetAllRadios();
         }
 
         [HttpGet]
         [Route("radios/{basename}")]
         public virtual Radio Radio(string basename)
         {
-            var radio = ARadio.GetARadio(basename);
-            return radio;
+            return _musicRepo.GetRadio(basename);
         }
 
         [HttpGet]
         [Route("radios/subradios/{name}")]
         public virtual IEnumerable<SubRadio> SubRadioList(string name)
         {
-            var radio = ARadio.GetARadio(name);
+            var rDb = _musicRepo.GetRadio(name);
+            var radio = ARadio.GetARadio(rDb);
             return radio.HasSubsetRadios ? radio.GetAllSubRadios() : new SubRadio[]{};
         }
 

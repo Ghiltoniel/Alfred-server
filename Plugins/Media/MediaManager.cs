@@ -106,6 +106,11 @@ namespace Alfred.Plugins
                 PlaySongIndex(indexPlaylist);
         }
 
+        public void BroadcastStatus()
+        {
+            UpdateWebsite();
+        }
+
         public void AddSongsToPlaylist()
         {
             var indexPlaylist = 0;

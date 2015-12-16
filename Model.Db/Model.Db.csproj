@@ -71,6 +71,7 @@
     <Compile Include="CommandItem.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Media\Episode.cs" />
+    <Compile Include="Media\RadioDb.cs" />
     <Compile Include="Media\MusicPlaylist.cs" />
     <Compile Include="Media\Movie.cs" />
     <Compile Include="Media\Music.cs" />
@@ -83,6 +84,18 @@
     <Compile Include="Migrations\201512041550139_ChangeMaxLengthLights.cs" />
     <Compile Include="Migrations\201512041550139_ChangeMaxLengthLights.Designer.cs">
       <DependentUpon>201512041550139_ChangeMaxLengthLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512161513242_AddRadio.cs" />
+    <Compile Include="Migrations\201512161513242_AddRadio.Designer.cs">
+      <DependentUpon>201512161513242_AddRadio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512161514307_AddRadio1.cs" />
+    <Compile Include="Migrations\201512161514307_AddRadio1.Designer.cs">
+      <DependentUpon>201512161514307_AddRadio1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512161602340_AddRadio2.cs" />
+    <Compile Include="Migrations\201512161602340_AddRadio2.Designer.cs">
+      <DependentUpon>201512161602340_AddRadio2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Path.cs" />
@@ -118,6 +131,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512041550139_ChangeMaxLengthLights.resx">
       <DependentUpon>201512041550139_ChangeMaxLengthLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512161513242_AddRadio.resx">
+      <DependentUpon>201512161513242_AddRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512161514307_AddRadio1.resx">
+      <DependentUpon>201512161514307_AddRadio1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512161602340_AddRadio2.resx">
+      <DependentUpon>201512161602340_AddRadio2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

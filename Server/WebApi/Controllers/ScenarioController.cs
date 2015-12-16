@@ -22,9 +22,12 @@ namespace Alfred.Server.WebApi.Controllers
     public class ScenarioController : ApiController
     {
         public ScenarioRepository _repo;
+        public MusicRepository _musicRepo;
+
         public ScenarioController()
         {
             _repo = new ScenarioRepository();
+            _musicRepo = new MusicRepository();
         }
 
         [HttpGet]
@@ -53,7 +56,8 @@ namespace Alfred.Server.WebApi.Controllers
                 var infosRadio = scenario.Radio.Split('-');
                 if (infosRadio.Length > 0)
                 {
-                    var radio = ARadio.GetARadio(infosRadio[0]);
+                    var rDb = _musicRepo.GetRadio(infosRadio[0]);
+                    var radio = ARadio.GetARadio(rDb);
                     var subradios = radio.GetAllSubRadios();
                     if (subradios != null)
                         foreach (var subradio in subradios)

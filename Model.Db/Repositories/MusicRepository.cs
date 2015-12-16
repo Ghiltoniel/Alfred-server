@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
+using Alfred.Model.Core.Music;
 
 namespace Alfred.Model.Db.Repositories
 {
@@ -129,6 +130,42 @@ namespace Alfred.Model.Db.Repositories
             {
                 var musics = db.Musics.Where(m => m.Genre == name).Take(size);
                 return musics.ToList();
+            }
+        }
+
+        public IEnumerable<Radio> GetAllRadios()
+        {
+            using (var db = new AlfredContext())
+            {
+                return db.RadioDbs
+                    .OrderBy(a => a.BaseName)
+                    .Select(r => new Radio()
+                    {
+                        BaseName = r.BaseName,
+                        BaseUrl = r.BaseUrl,
+                        DisplayName = r.DisplayName,
+                        HasSubsetRadios = r.HasSubsetRadios,
+                        ThumbnailUrl = r.ThumbnailUrl
+                    })
+                    .ToList();
+            }
+        }
+
+        public Radio GetRadio(string baseName)
+        {
+            using (var db = new AlfredContext())
+            {
+                var r = db.RadioDbs
+                    .Single(r1 => r1.BaseName == baseName);
+
+                return new Radio()
+                {
+                    BaseName = r.BaseName,
+                    BaseUrl = r.BaseUrl,
+                    DisplayName = r.DisplayName,
+                    HasSubsetRadios = r.HasSubsetRadios,
+                    ThumbnailUrl = r.ThumbnailUrl
+                };
             }
         }
     }

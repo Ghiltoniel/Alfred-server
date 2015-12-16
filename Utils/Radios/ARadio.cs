@@ -63,22 +63,20 @@ namespace Alfred.Utils.Radios
             return result;
         }
 
-        public static ARadio GetARadio(string name)
+        public static ARadio GetARadio(Radio radio)
         {
             try
             {
-                if (!name.EndsWith("Radio"))
+                if (!radio.BaseName.EndsWith("Radio"))
                     return null;
-
-                var url = Settings.Default[name].ToString();
-
+                
                 // Create a new object of plugin type
-                var model = Type.GetType(string.Format("AlfredUtils.Radios.{0}", name));
+                var model = Type.GetType(string.Format("AlfredUtils.Radios.{0}", radio.BaseName));
                 var objectModel = (ARadio)Activator.CreateInstance(model);
 
                 // Set the arguments for the plugin call
-                objectModel.BaseName = name;
-                objectModel.BaseUrl = url;
+                objectModel.BaseName = radio.BaseName;
+                objectModel.BaseUrl = radio.BaseUrl;
 
                 return objectModel;
             }

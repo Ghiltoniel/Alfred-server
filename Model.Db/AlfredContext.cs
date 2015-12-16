@@ -23,6 +23,7 @@ namespace Alfred.Model.Db
         public DbSet<Configuration> Configurations { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Path> Paths { get; set; }
+        public DbSet<RadioDb> RadioDbs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
