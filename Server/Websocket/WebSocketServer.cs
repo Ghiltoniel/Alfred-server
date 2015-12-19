@@ -26,7 +26,6 @@ namespace Alfred.Server
         public void Start(string webSocketAddress)
         {
             _fServer = new Fleck2.WebSocketServer(webSocketAddress);
-            _fServer.Certificate = new X509Certificate2("Server_TemporaryKey.pfx", "Ghiltoniel1");
             try
             {
                 _fServer.Start(socket =>

@@ -357,14 +357,15 @@ namespace Alfred.Plugins
             float? volume = null;
             int? status = null;
 
+            var culture = new CultureInfo("en-US");
             if (arguments.ContainsKey("length"))
-                length = double.Parse(arguments["length"]);
+                length = double.Parse(arguments["length"].Replace(",", "."), culture);
 
             if (arguments.ContainsKey("position"))
-                position = double.Parse(arguments["position"]);
+                position = double.Parse(arguments["position"].Replace(",", "."), culture);
 
             if (arguments.ContainsKey("volume"))
-                volume = float.Parse(arguments["volume"]);
+                volume = float.Parse(arguments["volume"].Replace(",", "."), culture);
 
             if (arguments.ContainsKey("status"))
                 status = int.Parse(arguments["status"]);
